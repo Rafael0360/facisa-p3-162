@@ -1,5 +1,0 @@
-INDEX VERSION 1.129+C:\Users\rafae\Documents\Projetos\Java\facisa-p3-162\.metadata\.plugins\org.eclipse.jdt.core
-1922806976.index
-2933283321.index
-1719116025.index
-785770823.index
