@@ -1,7 +1,18 @@
 package br.facisa.p3.ed.sortingAlgorithms;
-
+/**
+ * Class to sort array using Quick sort algorthm
+ * @author Rafael
+ *
+ */
 public class QuickSort{
 	
+	/**
+	 * Method of sorting
+	 * @param array
+	 * @param first element array
+	 * @param last element array
+	 * @return sorted array
+	 */
 	public static int[] sort(int[] array, int first, int last){
 		if (first < last){
 			int head = division(array, first, last);
