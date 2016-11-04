@@ -13,15 +13,14 @@ public class QuickSort{
 	 * @param last element array
 	 * @return sorted array
 	 */
-	public static int[] sort(int[] array, int first, int last){
+	public static void sort(int[] array, int first, int last){
 		if (first < last){
 			int head = division(array, first, last);
 			sort (array, first, head-1);
 			sort (array, head +1, last);
 		}
-		return array;
 	}
-	
+		
 	private static int division(int[] array, int first, int last){
 		int head = array[first];
 		int i = first+1;

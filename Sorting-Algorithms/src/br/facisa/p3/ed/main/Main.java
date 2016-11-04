@@ -5,24 +5,35 @@ import java.io.IOException;
 import br.facisa.p3.ed.fileHandling.File;
 import br.facisa.p3.ed.sortingAlgorithms.BubbleSort;
 import br.facisa.p3.ed.sortingAlgorithms.QuickSort;
+import br.facisa.p3.ed.sortingAlgorithms.RadixSort;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
+		String file = "./txt/in.txt";
 		int[] array;
 		System.out.println("unordered list:");
-		array = File.getTextTxt("txt\\in.txt");
+		array = File.getTextTxt(file);
 		for (int x: array){
 			System.out.print(x + " ");
 		}
 		System.out.println("\n");
 		System.out.println("Bubble Sort");
-		array = BubbleSort.sort(array);
+		BubbleSort.sort(array);
 		for (int x: array){
 			System.out.print(x + " ");
 		}
+		
+		array = File.getTextTxt(file);
 		System.out.println("\n");
 		System.out.println("Quick Sort");
-		array = QuickSort.sort(array, 0, array.length-1);
+		QuickSort.sort(array, 0, array.length-1);
+		for (int x: array){
+			System.out.print(x + " ");
+		}
+		array = File.getTextTxt(file);
+		System.out.println("\n");
+		System.out.println("Radix Sort");
+		RadixSort.sort(array);
 		for (int x: array){
 			System.out.print(x + " ");
 		}

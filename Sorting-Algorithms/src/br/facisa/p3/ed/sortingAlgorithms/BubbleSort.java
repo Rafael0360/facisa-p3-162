@@ -10,7 +10,7 @@ public class BubbleSort {
 	 * @param array
 	 * @return sorted array
 	 */
-	public static int[] sort (int[] array){
+	public static void sort (int[] array){
 		for (int i = array.length;  i > 0; i--){
 			for (int j = 0; j < i-1; j++){
 				if (array[j] > array[j+1]){
@@ -20,6 +20,5 @@ public class BubbleSort {
 				}
 			}
 		}
-		return array;
 	}
 }
