@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <queue>
+#include <stack>
 using namespace std;
 
 class Graph{
@@ -37,6 +38,59 @@ class Graph{
 		}
 */
 		// list<int>* BSF(int initial){
+		void DSF(int initial){
+			list<int> l;
+			bool visited[size];
+			stack<int> s;
+
+			for (int i = 0; i < size; i ++){
+				visited[i] = false;
+			}
+
+			while (true){
+
+				if(!visited[initial]){
+					l.push_back(initial);
+					visited[initial] = true;
+					s.push(initial);
+				}
+
+				bool found = false;
+				// for(it = graph[u].begin(); it != graph[u].end(); it++){
+				// 	int v = it->first;
+				// 	int cost = it->second;
+				list<pair<int,int> > :: iterator it;
+				int d = 0;
+				for (it = graph[initial].begin(); it!= graph[initial].end(); it++){
+					d = it->first;
+
+					if(!visited[d]){
+						l.push_back(d);
+						found = true;
+						break;
+					}
+				}
+
+				if (found){
+					initial = d;
+				}else{
+					s.pop();
+					if(s.empty()){
+						break;
+					}else{
+						initial = s.top();
+					}
+				}
+
+			}
+
+			list<int> :: iterator  it;
+			for (it = l.begin(); it != l.end(); it++){
+				cout << *it << " ";
+			}
+			cout << endl;
+		}
+
 		void BSF(int initial){
 			bool visited[size];
 			list<int> l;
@@ -71,8 +125,9 @@ class Graph{
 			}
 			list<int> :: iterator  it;
 			for (it = l.begin(); it != l.end(); it++){
-				cout << *it << endl;
+				cout << *it << " ";
 			}
+			cout << endl;
 			// list<int>* pointer = &l;
 			// return pointer;
 		}
@@ -147,6 +202,7 @@ int main(){
 	//list<int>* lf;
 	//lf = g.BSF(0);
 	g.BSF(0);
+	g.DSF(0);
 	// list<int> l;
 	// l =  *lf;
 	// cout<<l.front()<<endl;
