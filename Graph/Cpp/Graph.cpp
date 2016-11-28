@@ -1,4 +1,5 @@
 #include <iostream>
+#include<stdio.h>
 #include <list>
 #include <queue>
 #include <stack>
@@ -37,6 +38,61 @@ class Graph{
 			this->sizeGraph = g.getSize();
 		}
 */
+		int warshall(int point1, int point2){
+			int mt[size][size];
+			for (int i = 0; i < size; i ++){
+				for (int j = 0; j < size; j++){
+					mt[i][j] = 99999;
+				}
+			}
+			// for (int i = 0; i < size; i ++){
+			// 	for (int j = 0; j < size; j++){
+			// 	cout<<mt[i][j] << " ";
+			// 	}
+			// 	cout << endl;
+			// }
+			list<pair< int, int> > :: iterator it;
+			for(int i = 0; i < size; i ++){
+			for(it = graph[i].begin(); it != graph[i].end(); it++){
+				mt[i][it->first] = it->second;
+
+			}
+		}
+
+			// for (int i = 0; i < size; i ++){
+			// 	for (int j = 0; j < size; j++){
+			// 		cout << mt[i][j] << " ";
+			// 	}
+			// 	cout << endl;
+			// }
+			for (int k = 0; k < size; k++){
+				for (int i = 0; i < size; i++){
+					for (int j = 0; j < size; j++){
+						if(mt[i][k] + mt[k][j] < mt[i][j]){
+							mt[i][j] = mt[i][k] + mt[k][j];
+						}
+					}
+				}
+			}
+			// for (int i = 0; i < size; i ++){
+			// 	for (int j = 0; j < size; j++){
+			// 		cout << mt[i][j] << " ";
+			// 	}
+			// 	cout << endl;
+			// }
+	// 		for (int i = 0; i < size; i++){
+	// 		 for (int j = 0; j < size; j++){
+	// 				 if (mt[i][j] == 99999)
+	// 						 printf("%7s", "INF");
+	// 				 else
+	// 						 printf ("%7d", mt[i][j]);
+	// 		 }
+	// 		 printf("\n");
+	//  }
+
+			return mt[point1][point2];
+		}
+
 		// list<int>* BSF(int initial){
 		void DSF(int initial){
 			list<int> l;
@@ -203,6 +259,7 @@ int main(){
 	//lf = g.BSF(0);
 	g.BSF(0);
 	g.DSF(0);
+	cout << g.warshall(0,4) << endl;
 	// list<int> l;
 	// l =  *lf;
 	// cout<<l.front()<<endl;
