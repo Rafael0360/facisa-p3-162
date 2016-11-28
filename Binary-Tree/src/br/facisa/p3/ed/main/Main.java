@@ -7,18 +7,15 @@ import br.facisa.p3.ed.tree.Tree;
 public class Main {
 
 	public static void main(String[] args) {
-		Tree tree = new Tree();
-		tree.add(7);
-		tree.add(8);
-		tree.add(3);
-		tree.add(2);
-		tree.add(4);
-		tree.add(6);
-		tree.add(10);
+		int[] a = {654,59,12,46, 32, 1, 90};
+		Tree arv = new Tree();
+		for (int x : a){
+			arv.add(x);
+		}
 		
-		System.out.println("Pre order: " + tree.preOrder());
-		System.out.println("In order: " +tree.inOrder());
-		System.out.println("Post order: " +tree.postOrder());
+		System.out.println("Pre order: " + arv.preOrder());
+		System.out.println("In order: " +arv.inOrder());
+		System.out.println("Post order: " +arv.postOrder());
 	}
 
 }
