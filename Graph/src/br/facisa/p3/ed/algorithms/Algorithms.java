@@ -162,4 +162,44 @@ public class Algorithms {
 		}
 		return (matrix[point1][point2]);
 	}
+	
+	
+	public int ford(int point1, int point2){
+		int[][] matrix = new int[graph.getSize()][graph.getSize()];
+		int[] distance = new int[graph.getSize()];
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getSize(); j++){
+				matrix[i][j] = INFINITE;
+			}
+		}
+		
+		for(int i = 0; i < graph.getSize(); i++){
+			distance[i] = INFINITE;
+		}
+		
+
+		for(int k = 0; k < graph.getSize(); k++){
+			for(int i = 0; i < graph.getSize(); i++){
+				for (int j = 0; j < graph.getSize(); j++){
+					if(matrix[i][k] + matrix[k][j] < matrix[i][j]){
+						matrix[i][j] = matrix[i][k] + matrix[k][j];
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getSize(); j++){
+				if (matrix[i][j] != INFINITE){
+					if (distance[i] > distance[j]+matrix[i][j]){
+						System.err.println("contains negative cycle");
+					}
+				}
+			}
+		}
+		
+		return matrix[point1][point2];
+		
+	}
+	
 }

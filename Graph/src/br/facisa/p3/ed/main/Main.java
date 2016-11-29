@@ -17,6 +17,7 @@ public class Main {
 		Algorithms a = new Algorithms(g);
 		System.out.println("Menor custo com dijkstra-> " + a.dijkstra(0, 4));
 		System.out.println("Menor custo com warshall-> " + a.warshall(0, 4));
+		System.out.println("Menor custo com wellman-Ford-> "+ a.ford(0, 4));
 		System.out.println("Ordenação BSF : "+ a.BSF(0));
 		System.out.println("Ordenação DSF : "+ a.DSF(0));
 		
