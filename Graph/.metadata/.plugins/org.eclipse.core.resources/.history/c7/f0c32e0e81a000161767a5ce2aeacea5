@@ -1,0 +1,15 @@
+package ge;
+
+public class main {
+
+	public static void main(String[] args) {
+		radix r = new radix();
+		int[] a = {6,5,7,9,2,1,22,13};
+		a = r.sort(a);
+		for (int x: array){
+			System.out.println(x);
+		}
+
+	}
+
+}

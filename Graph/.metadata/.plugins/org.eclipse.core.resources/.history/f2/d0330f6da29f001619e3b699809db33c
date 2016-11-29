@@ -1,0 +1,12 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		int [] array = {9,11, 8,7,6,5,4,3,2,1};
+		Radix.sort(array);
+		for(int x:array){
+			System.out.println(x);
+		}
+	}
+
+}

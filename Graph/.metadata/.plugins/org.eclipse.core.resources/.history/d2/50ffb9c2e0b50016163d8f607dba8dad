@@ -1,0 +1,34 @@
+package br.facisa.p3.ed.algorithms;
+
+import java.util.ArrayList;
+
+import br.facisa.p3.ed.graph.Graph;
+
+public class Algorithms {
+	private static final int INFINITE = 99999;
+	private Graph graph;
+	
+	public Algorithms(Graph graph){
+		this.graph = graph;
+	}
+	
+	public int dijkstra(int point1, int point2){
+		
+	}
+	
+	public int warshall(int point1, int point2){
+		int[][] matrix = new int[graph.getSize()][graph.getSize()];
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getSize(); j++){
+				matrix[i][j] = INFINITE;
+			}
+		}
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getSize(); j++){
+				matrix[i][graph.getEdge(j).getValue()] = graph.getEdge(j).getWeight();
+			}
+		}
+	}
+}

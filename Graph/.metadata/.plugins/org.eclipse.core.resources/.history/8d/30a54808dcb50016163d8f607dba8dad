@@ -1,0 +1,5 @@
+package br.facisa.p3.ed.graph;
+
+public class Edge {
+
+}

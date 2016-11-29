@@ -1,0 +1,37 @@
+package br.facisa.p3.ed.graph;
+
+import java.util.ArrayList;
+
+public class Graph {
+	private int size;
+	private ArrayList<ArrayList<Edge>> graph;
+	
+	public Graph(int size){
+		this.size = size;
+		graph = new ArrayList<ArrayList<Edge>> ();
+		ArrayList<Edge> l;
+		for (int i = 0; i < size; i ++){
+			l = new ArrayList<Edge>();
+			graph.add(l);
+		}
+	}
+	
+	public void add(int point1, int point2, int weight){
+		Edge e = new Edge(point2, weight);
+		graph.get(point1).add(e);
+	}
+	
+	public list<Edge> getEdges(int pos){
+		return graph.get(pos);
+	}
+	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+	
+	
+}

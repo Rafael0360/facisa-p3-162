@@ -15,9 +15,11 @@ public class Main {
 		g.add(2,4,1);
 		g.add(1,2,2);
 		Algorithms a = new Algorithms(g);
-		System.out.println(a.warshall(0, 4));
-		System.out.println(a.BSF(0));
-		System.out.println(a.dijkstra(0, 4));
+		System.out.println("Menor custo com dijkstra-> " + a.dijkstra(0, 4));
+		System.out.println("Menor custo com warshall-> " + a.warshall(0, 4));
+		System.out.println("Ordenação BSF : "+ a.BSF(0));
+		System.out.println("Ordenação DSF : "+ a.DSF(0));
+		
 		
 	}
 

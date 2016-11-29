@@ -1,0 +1,19 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		int [] array = {5,4,3,22,1, 32, 11, 0};
+		Radix.sort2(array);
+		for(int x:array){
+			System.out.println(x);
+		}
+	
+	}
+	
+	//public static void sort(){
+	//	int m = 32;
+	//	int exp = 1;
+		
+	//}
+
+}

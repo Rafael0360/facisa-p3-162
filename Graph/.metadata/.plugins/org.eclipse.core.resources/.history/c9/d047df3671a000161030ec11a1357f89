@@ -1,0 +1,65 @@
+
+public class Radix {
+	
+	 public static void sort( int[] a)
+	    {
+	        int i;
+	        int exp = 1;
+	        int m = a[0];
+	        int n = a.length;
+	        int[] b = new int[a.length];
+	        for (i = 1; i < n; i++)
+	            if (a[i] > m)
+	                m = a[i];
+	        while (m / exp > 0)
+	        {
+	            int[] bucket = new int[10];
+	 
+	            for (i = 0; i < n; i++)
+	                bucket[(a[i] / exp) % 10]++;
+	            for (i = 1; i < 10; i++)
+	                bucket[i] += bucket[i - 1];
+	            for (i = n - 1; i >= 0; i--)
+	                b[--bucket[(a[i] / exp) % 10]] = a[i];
+	            for (i = 0; i < n; i++)
+	                a[i] = b[i];
+	            exp *= 10;        
+	        }
+	    }
+	
+	public static void sort2(int[] array){
+		int head = array[0];
+		for (int i = 0; i < array.length; i ++){
+			if (head < array[i]){
+				head = array[i];
+			}
+		int exp = 1;
+		int[] finalArray = new int[array.length-1];
+		
+		while (head/exp != 0){
+			int [] aux = new int[10];
+			//fist for
+			for (int j = 0; j < array.length; j ++){
+				aux[array[j]/exp%10]++;
+			}
+			//second for
+			for (int j = 0; j < array.length-1; j ++){
+				aux[i+1] += aux[i];
+			}
+			//third for
+			for (int j = array.length-1; j >= 0; j--){
+				finalArray[--aux[(array[i] / exp) % 10]] = array[i];
+			}
+			array = finalArray;
+			exp*= 10;
+			
+		}
+		
+		
+		
+		}
+	}
+
+
+	 
+}

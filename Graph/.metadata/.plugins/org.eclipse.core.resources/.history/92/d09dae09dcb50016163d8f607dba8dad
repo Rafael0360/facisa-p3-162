@@ -1,0 +1,10 @@
+package br.facisa.p3.ed.graph;
+
+public class Graph {
+	private int size;
+	private list<Edge> graph;
+	
+	public Graph(int size){
+		this.size = size;
+	}
+}

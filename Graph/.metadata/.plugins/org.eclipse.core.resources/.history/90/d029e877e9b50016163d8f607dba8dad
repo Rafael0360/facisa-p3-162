@@ -1,0 +1,76 @@
+package br.facisa.p3.ed.algorithms;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import br.facisa.p3.ed.graph.Graph;
+
+public class Algorithms {
+	private static final int INFINITE = 99999;
+	private Graph graph;
+	
+	public Algorithms(Graph graph){
+		this.graph = graph;
+	}
+	
+	//public int dijkstra(int point1, int point2){
+		
+	//}
+	
+	public ArrayList<int> BSF(int initial){
+		boolean[] visited = new boolean[graph.getSize()];
+		ArrayList<Integer> l = new ArrayList<Integer>();
+		Queue<Integer> q = new LinkedList<Integer>();
+		for (int i = 0; i < graph.getSize(); i++){
+			visited[i] = false;
+		}
+		
+		l.add(initial);
+		visited[initial] = true;
+		while (true){
+			for (int i = 0; i < graph.getEdges(initial).size(); i++){
+				int d = graph.getEdge(initial, i).getValue();
+				if (!visited[d]){
+					l.add(d);
+					visited[d] = true;
+					q.add(d);
+				}
+			}
+			if (!q.isEmpty()){
+				initial = q.peek();
+				q.remove();
+			}else{
+				break;
+			}
+		}
+		return l;
+	}
+	
+	public int warshall(int point1, int point2){
+		int[][] matrix = new int[graph.getSize()][graph.getSize()];
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getSize(); j++){
+				matrix[i][j] = INFINITE;
+			}
+		}
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			for (int j = 0; j < graph.getEdges(i).size(); j++){
+				matrix[i][graph.getEdge(i, j).getValue()] = graph.getEdge(i, j).getWeight();
+			}
+		}
+		
+		for(int k = 0; k < graph.getSize(); k++){
+			for(int i = 0; i < graph.getSize(); i++){
+				for (int j = 0; j < graph.getSize(); j++){
+					if(matrix[i][k] + matrix[k][j] < matrix[i][j]){
+						matrix[i][j] = matrix[i][k] + matrix[k][j];
+					}
+				}
+			}
+		}
+		return (matrix[point1][point2]);
+	}
+}

@@ -2,8 +2,8 @@ package br.facisa.p3.ed.algorithms;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 
 import br.facisa.p3.ed.graph.Graph;
 
@@ -58,6 +58,53 @@ public class Algorithms {
 		
 		return distance[point2];
 		
+	}
+	
+	public ArrayList<Integer> DSF(int initial){
+		ArrayList<Integer> l = new ArrayList<Integer>();
+		boolean[] visited = new boolean[graph.getSize()];
+		Stack<Integer> s = new Stack<Integer>();
+		
+		for (int i = 0; i < graph.getSize(); i++){
+			visited[i] = false;
+		}
+		
+		l.add(initial);
+		while (true){
+			if(!visited[initial]){
+				
+				visited[initial] = true;
+				s.push(initial);
+			}
+			
+			boolean found = false;
+			int d = 0;
+			for (int i = 0; i < graph.getEdges(initial).size(); i++){
+				d = graph.getEdge(initial, i).getValue();
+				
+				if(!visited[d]){
+					if (!l.contains(d)){
+						//System.out.println(d);
+						l.add(d);
+					}
+					found = true;
+					break;
+				}
+				
+			}
+			if (found){
+				initial = d;
+			}else{
+				s.pop();
+				if(s.isEmpty()){
+					break;
+				}else{
+					initial = s.peek();
+				}
+			}
+			
+		}
+		return l;
 	}
 	
 	public ArrayList<Integer> BSF(int initial){

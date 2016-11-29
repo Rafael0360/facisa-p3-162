@@ -1,0 +1,14 @@
+package br.facisa.p3.ed.graph;
+
+public class Graph {
+	private int size;
+	private ArrayList<ArrayList<Edge>> graph;
+	
+	public Graph(int size){
+		this.size = size;
+	}
+	
+	public void add(int point1, int point2, int weight){
+		Edge e = new Edge(point2, weight);
+	}
+}
